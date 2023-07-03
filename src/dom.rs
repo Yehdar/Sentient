@@ -8,9 +8,10 @@ struct ElementData {
     attributes: AttrMap,
 }
 
+type AttrMap = HashMap<String, String>;
+
 enum NodeType {
     Text(String),
     Element(ElementData),
-    Comment(HashMap),
+    Comment(String),
 }
-
