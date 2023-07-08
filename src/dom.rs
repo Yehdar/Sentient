@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std:fmt;
 
 struct Node {
     children: Vec<Node>,
@@ -25,4 +26,10 @@ impl Node {
             children,
         }
     }
+}
+
+impl fmt::Debug for Node {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:?}", self.node_type),
+    }    
 }
