@@ -33,3 +33,12 @@ impl fmt::Debug for Node {
         write!(f, "{:?}", self.node_type),
     }    
 }
+
+impl fmt::Debug for NodeType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match *self {
+            NodeType::Text(ref t) | NodeType::Comment(ref t) => write!(f, "{}", t),
+            NodeType::Element(ref e) => write(f, "{:?}", e),
+        }
+    }    
+}
