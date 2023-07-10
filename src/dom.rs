@@ -11,6 +11,15 @@ struct ElementData {
     attributes: AttrMap,
 }
 
+impl ElementData {
+    fn new(tag_name: String, attributes: AttrMap) -> ElementData {
+        ElementData {
+            tag_name,
+            attributes,
+        }
+    }
+}
+
 type AttrMap = HashMap<String, String>;
 
 enum NodeType {
