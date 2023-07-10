@@ -42,3 +42,14 @@ impl fmt::Debug for NodeType {
         }
     }    
 }
+
+impl fmt::Debug for ElementData {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let mut attributes_string = String::new();
+
+        for (attr, value) in self.attributes_string.iter(){
+            attributes_string.push_str(&format!(" {}=\"{}\""), attr, value);
+        }
+        write!(f, "<{},{}"), self.tag_name, attributes_string)
+    }
+}
