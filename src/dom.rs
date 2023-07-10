@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std:fmt;
 
 struct Node {
@@ -16,6 +16,17 @@ impl ElementData {
         ElementData {
             tag_name,
             attributes,
+        }
+    }
+
+    fn get_id(&self) -> Option<&String>{
+        self.attributes.get("id")
+    }
+
+    fn get_classes(&self) -> HashSet<&str> {
+        match self.attributes.get("class"){
+            Some(s) => s.split(' ').collect(),
+            None => HashSet::new(),
         }
     }
 }
