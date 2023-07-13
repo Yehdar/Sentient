@@ -73,3 +73,14 @@ impl fmt::Debug for ElementData {
         write!(f, "<{},{}"), self.tag_name, attributes_string)
     }
 }
+
+
+fn pretty_print(n: &Node, indent_size: usize){
+    let indent = (0..indent_size).map(|_| " ").collect::<String>();
+
+    match n.node_type {
+        NodeType::Element(ref e) => println!("{}{:?}", indent, e),
+        NodeType::Text(ref t) => println!("{}{}", indent, t),
+        NodeType::Comment(ref c) => println!("{}<!---{}--->", indent, c),
+    }
+}
