@@ -87,4 +87,9 @@ fn pretty_print(n: &Node, indent_size: usize){
     for child in n.children.iter() {
         pretty_print(&child, indent_size + 2);
     }
+
+    match n.node_type {
+        NodeType::Element(ref e) => println!("{}</{}>", indent, e.tag_name),
+        _ => {}
+    }
 }
