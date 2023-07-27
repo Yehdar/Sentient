@@ -15,4 +15,22 @@ impl<'a> HtmlParser<'a> {
             node_q: Vec::new(),
         }
     }
+
+    pub fn parse_nodes(&mut self) -> Vec<Node> {
+        let mut nodes = Vec::new();
+        while self.chars.peek().is_some(){
+            self.consume_while(char::is_whitespace);
+        }
+    }
+
+    fn consume_while<F>(&mut self, condition: F) -> String
+    where
+        F: Fn(char) -> bool,
+    {
+        let mut result = String::new();
+        while self.chars.peek().map_or(false, |c| condition(*c)) {
+            result.push(self.chars.next().unwrap());
+        }
+        result
+    }
 }
