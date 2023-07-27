@@ -41,4 +41,8 @@ impl<'a> HtmlParser<'a> {
         }
         result
     }
+
+    fn is_valid_tag_name(ch: char) -> bool {
+            ch.is_digit(36)
+        }
 }
