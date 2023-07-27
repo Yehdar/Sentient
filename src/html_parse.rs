@@ -20,6 +20,14 @@ impl<'a> HtmlParser<'a> {
         let mut nodes = Vec::new();
         while self.chars.peek().is_some(){
             self.consume_while(char::is_whitespace);
+            if self.chars.peek().map_or(false, |c| *c == '<'){
+                self.chars.next();
+                if self.chars.peek().map_or(false, |c| *c == '/'){
+                    self.chars.next();
+                    self.consume_while(char::is_whitespace);
+
+                    let close_tag_name = self.consume_while(is_valid_tag_name);
+            }
         }
     }
 
