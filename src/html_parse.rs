@@ -43,6 +43,16 @@ impl<'a> HtmlParser<'a> {
 
     fn parse_comment_node(&mut self) -> Node {
         let mut comment_content = String::new();
+
+        if self.chars.peek().map_or(false, |c| *c == '-'){
+            self.chars.next();
+            if self.chars.peek().map_or(false, |c| *c == '-'){
+                self.chars.next();
+            } else {
+                self.consume_while(|c| c != '>');
+                return Node::new(NodeType::Comment(comment_content), Vec::new());
+            }
+        }
     }
 
     fn consume_while<F>(&mut self, condition: F) -> String
