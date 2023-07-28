@@ -41,6 +41,10 @@ impl<'a> HtmlParser<'a> {
         }
     }
 
+    fn parse_comment_node(&mut self) -> Node {
+        let mut comment_content = String::new();
+    }
+
     fn consume_while<F>(&mut self, condition: F) -> String
     where
         F: Fn(char) -> bool,
