@@ -33,6 +33,10 @@ impl<'a> HtmlParser<'a> {
 
                     self.node_q.push(close_tag_name);
                     break;
+                } else if self.chars.peek().map_or(false, |c| *c == '!') {
+                    self.chars.next();
+                    nodes.push(self.parse_comment_node());
+                }
             }
         }
     }
