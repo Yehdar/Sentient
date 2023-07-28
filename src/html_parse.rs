@@ -27,6 +27,12 @@ impl<'a> HtmlParser<'a> {
                     self.consume_while(char::is_whitespace);
 
                     let close_tag_name = self.consume_while(is_valid_tag_name);
+
+                    self.consume_while(|x| x != '>');
+                    self.chars.next();
+
+                    self.node_q.push(close_tag_name);
+                    break;
             }
         }
     }
