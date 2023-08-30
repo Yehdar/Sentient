@@ -1,2 +1,2 @@
-# ghetto-blink-rewrite
-super simple rewrite of google chrome's rendering engine
+# W11
+building my own rendering engine in rust inspired by Chromium Project's Blink
